@@ -1,4 +1,9 @@
 import React from "react"
+
+import pageImage from "../images/page.svg"
+import blogImage from "../images/blog.svg"
+import searchImage from "../images/search.svg"
+
 import {
   Card,
   Button,
@@ -17,21 +22,21 @@ const ThreeCardDeck = props => {
       title: "Landing Pages",
       subtitle: "Hey",
       text: "Heyyy",
-      img: "https://source.unsplash.com/random/100x75",
+      img: pageImage,
     },
     {
       id: 2,
       title: "Landing Pages",
       subtitle: "Hey",
       text: "Heyyy",
-      img: "https://source.unsplash.com/random/100x75",
+      img: blogImage,
     },
     {
       id: 3,
       title: "Landing Pages",
       subtitle: "Hey",
       text: "Heyyy",
-      img: "https://source.unsplash.com/random/100x75",
+      img: searchImage,
     },
   ]
   return (

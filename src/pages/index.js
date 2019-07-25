@@ -3,7 +3,6 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 
 import { Col, Container, Row } from "reactstrap"
 
-import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import Hero from "../components/hero"
@@ -27,7 +26,6 @@ const IndexPage = () => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <Hero />
-      <Layout>
         <Container>
           <SEO title="Home" />
           <ThreeCardDeck />
@@ -45,7 +43,6 @@ const IndexPage = () => {
             </Col>
           </Row>
         </Container>
-      </Layout>
     </>
   )
 }

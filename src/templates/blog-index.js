@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Header from "../components/header"
 
-import { Container, Col, Row } from "reactstrap"
+import { Container, Card, CardDeck, Col, Row } from "reactstrap"
 
 // Leaving as a class until I can figure out how to pass context from gatsby-node otherwise.
 class BlogIndex extends React.Component {
@@ -31,23 +31,30 @@ class BlogIndex extends React.Component {
           <Container>
             <Row>
               <Col>
-                {posts.map(({ node }) => {
-                  const title = node.frontmatter.title || node.fields.slug
-                  return (
-                    <div key={node.fields.slug}>
-                      <h3>
-                        <Link
-                          style={{ boxShadow: "none" }}
-                          to={node.fields.slug}
-                        >
-                          {title}
-                        </Link>
-                      </h3>
-                      <small>{node.frontmatter.date}</small>
-                      <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-                    </div>
-                  )
-                })}
+                <CardDeck>
+                  {posts.map(({ node }) => {
+                    const title = node.frontmatter.title || node.fields.slug
+                    return (
+                      <Card
+                        style={{
+                          padding: `5px`,
+                        }}
+                        key={node.fields.slug}
+                      >
+                        <h3>
+                          <Link
+                            style={{ boxShadow: "none" }}
+                            to={node.fields.slug}
+                          >
+                            {title}
+                          </Link>
+                        </h3>
+                        <small>{node.frontmatter.date}</small>
+                        <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                      </Card>
+                    )
+                  })}
+                </CardDeck>
               </Col>
             </Row>
             <Row>
@@ -60,7 +67,7 @@ class BlogIndex extends React.Component {
                   style={{
                     display: "flex",
                     flexWrap: "wrap",
-                    justifyContent: "space-between",
+                    justifyContent: "center",
                     alignItems: "center",
                     listStyle: "none",
                     padding: 0,
@@ -70,7 +77,7 @@ class BlogIndex extends React.Component {
                     <li
                       key={`pagination-number${i + 1}`}
                       style={{
-                        margin: 0,
+                        margin: 5,
                       }}
                     >
                       <Link

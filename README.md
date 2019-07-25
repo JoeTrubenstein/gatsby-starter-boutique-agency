@@ -5,6 +5,7 @@ A simple Gatsby starter site for small businesses.
 ## Features
 
 * A paginated blog
+* TypographyJS
 * Bootstrap (reactstrap) styling
 * PrismJS code highlighting
 * Netlify CMS for blog posts
