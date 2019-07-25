@@ -54,3 +54,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * [NickyMeuleman](https://github.com/NickyMeuleman/gatsby-paginated-blog) and their wonderful [guide for Gatsby Pagination](https://nickymeuleman.netlify.com/blog/gatsby-pagination/)
 * [Wes Anderson Palettes](https://wesandersonpalettes.tumblr.com/), the inspiration behind this design's "Zissou Blue."
+* [UnDraw](https://undraw.co/) and their ability to apply Zissou Blue to any free graphic.
