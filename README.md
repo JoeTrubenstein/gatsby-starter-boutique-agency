@@ -35,8 +35,8 @@ You can demo the live site at [https://gatsby-starter-boutique-agency.netlify.co
 
 ## Built With
 
-* [Gatsby Official Starter](http://www.dropwizard.io/1.0.2/docs/) 
-* [reactstrap](https://maven.apache.org/) 
+* [Gatsby Official Starter](https://www.gatsbyjs.org/starters/gatsbyjs/gatsby-starter-default/) 
+* [reactstrap](https://reactstrap.github.io/) 
 
 ## Contributing
 
