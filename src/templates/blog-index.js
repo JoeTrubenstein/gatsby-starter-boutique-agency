@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
+import Header from "../components/header"
 
 import { Container, Col, Row } from "reactstrap"
 
@@ -19,89 +20,96 @@ class BlogIndex extends React.Component {
     const nextPage = (currentPage + 1).toString()
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        {console.log(this.props)}
-        <SEO
-          title={siteTitle}
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        />
-        <Container>
-          <Row>
-            <Col>
-              {posts.map(({ node }) => {
-                const title = node.frontmatter.title || node.fields.slug
-                return (
-                  <div key={node.fields.slug}>
-                    <h3>
-                      <Link style={{ boxShadow: "none" }} to={node.fields.slug}>
-                        {title}
+      <>
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <Layout location={this.props.location} title={siteTitle}>
+          {console.log(this.props)}
+          <SEO
+            title={siteTitle}
+            keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          />
+          <Container>
+            <Row>
+              <Col>
+                {posts.map(({ node }) => {
+                  const title = node.frontmatter.title || node.fields.slug
+                  return (
+                    <div key={node.fields.slug}>
+                      <h3>
+                        <Link
+                          style={{ boxShadow: "none" }}
+                          to={node.fields.slug}
+                        >
+                          {title}
+                        </Link>
+                      </h3>
+                      <small>{node.frontmatter.date}</small>
+                      <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                    </div>
+                  )
+                })}
+              </Col>
+            </Row>
+            <Row>
+              <Col
+                style={{
+                  textAlign: `center`,
+                }}
+              >
+                <ul
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    listStyle: "none",
+                    padding: 0,
+                  }}
+                >
+                  {Array.from({ length: numPages }, (_, i) => (
+                    <li
+                      key={`pagination-number${i + 1}`}
+                      style={{
+                        margin: 0,
+                      }}
+                    >
+                      <Link
+                        to={`/blog/${i === 0 ? "" : i + 1}`}
+                        style={{
+                          textDecoration: "none",
+                          color: i + 1 === currentPage ? "#ffffff" : "",
+                          background: i + 1 === currentPage ? "#007acc" : "",
+                        }}
+                      >
+                        {i + 1}
                       </Link>
-                    </h3>
-                    <small>{node.frontmatter.date}</small>
-                    <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-                  </div>
-                )
-              })}
-            </Col>
-          </Row>
-          <Row>
-            <Col
+                    </li>
+                  ))}
+                </ul>
+              </Col>
+            </Row>
+            <Row
               style={{
                 textAlign: `center`,
               }}
             >
-              <ul
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  listStyle: "none",
-                  padding: 0,
-                }}
-              >
-                {Array.from({ length: numPages }, (_, i) => (
-                  <li
-                    key={`pagination-number${i + 1}`}
-                    style={{
-                      margin: 0,
-                    }}
-                  >
-                    <Link
-                      to={`/blog/${i === 0 ? "" : i + 1}`}
-                      style={{
-                        textDecoration: "none",
-                        color: i + 1 === currentPage ? "#ffffff" : "",
-                        background: i + 1 === currentPage ? "#007acc" : "",
-                      }}
-                    >
-                      {i + 1}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Col>
-          </Row>
-          <Row 
-          style={{
-            textAlign:`center`
-          }}>
-            <Col>
-              {!isFirst && (
-                <Link to={prevPage} rel="prev">
-                  ← Previous Page
-                </Link>
-              )}
-              <br></br>
-              {!isLast && (
-                <Link to={nextPage} rel="next">
-                  Next Page →
-                </Link>
-              )}
-            </Col>
-          </Row>
-        </Container>
-      </Layout>
+              <Col>
+                {!isFirst && (
+                  <Link to={`blog/${prevPage}`} rel="prev">
+                    ← Previous Page
+                  </Link>
+                )}
+                <br></br>
+                {!isLast && (
+                  <Link to={`blog/${nextPage} `} rel="next">
+                    Next Page →
+                  </Link>
+                )}
+              </Col>
+            </Row>
+          </Container>
+        </Layout>
+      </>
     )
   }
 }
