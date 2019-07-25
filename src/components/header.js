@@ -1,42 +1,46 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React, { useState } from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from "reactstrap"
+
+const Header = (props) => {
+  // Set hooks
+  const [isOpen, setIsOpen] = useState(false)
+
+  function toggleNav() {
+    if (isOpen) {
+      setIsOpen(false)
+    } else if (!isOpen) {
+      setIsOpen(true)
+    }
+  }
+
+  return (
+    <div>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">{props.siteTitle}</NavbarBrand>
+        <NavbarToggler
+          onClick={() => {
+            toggleNav()
           }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+        />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="/blog/">Blog</NavLink>
+            </NavItem>
+            
+          </Nav>
+        </Collapse>
+      </Navbar>
     </div>
-  </header>
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+  )
 }
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
 export default Header
