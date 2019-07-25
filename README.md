@@ -42,10 +42,6 @@ You can demo the live site at [https://gatsby-starter-boutique-agency.netlify.co
 
 I'm happy to look over any pull requests, should you be so kind as to open one.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
 * **Joe Trubenstein** - *Initial work* - [joeTrubenstein](https://github.com/joeTrubenstein)
