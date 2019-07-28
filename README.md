@@ -11,12 +11,17 @@ A simple Gatsby starter site for small businesses.
 
 ### Getting Started
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Either clone the repo using
 
 ```
-Give the example
+git clone https://github.com/JoeTrubenstein/gatsby-starter-boutique-agency.git
+```
+
+or with gatsby cli
+
+```
+gatsby new my-site https://github.com/JoeTrubenstein/gatsby-starter-boutique-agency.git
+
 ```
 
 then cd into the project and simply run
