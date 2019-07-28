@@ -6,13 +6,13 @@ const ContactForm = () => {
       <Form>
         <FormGroup>
           <Label for="exampleEmail">Email</Label>
-          <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+          <Input type="email" name="email" id="exampleEmail" placeholder="email address" />
         </FormGroup>
         <FormGroup>
           <Label for="exampleText">Text Area</Label>
           <Input type="textarea" name="text" id="exampleText" />
         </FormGroup>
-        <Button>Submit</Button>
+        <Button style={{backgroundColor:`#00abe8`}}>Submit</Button>
       </Form>
     );
 }

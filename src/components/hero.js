@@ -1,24 +1,25 @@
-import React from "react";
-import { Jumbotron, Container } from "reactstrap";
+import React from "react"
+import heroImage from "../images/cube.svg"
 
-import heroImage from "../images/space.svg"
+import "./hero.css"
 
-const Hero = (props) => {
+const Hero = () => {
   return (
-    <div>
-      <Jumbotron style={{
-        backgroundImage: `url(${heroImage})`,
-        backgroundPosition: `center`,
-        backgroundSize:`cover`,
-        minHeight: `60vh`,
-      }} fluid>
-        <Container fluid>
-          <h1 className="display-3">Fluid jumbotron</h1>
-          <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-        </Container>
-      </Jumbotron>
-    </div>
-  );
-};
+    <>
+      <div className="hero">
+        <div className="overlay" />
+        <img src={heroImage} alt="undraw spacesuit and rocket"></img>
+        <div className="container h-100">
+          <div className="d-flex h-100 text-center align-items-center">
+            <div className="w-100 text-white">
+              <h1 className="display-3">Boutique</h1>
+              <p className="lead mb-0">A Gatsby Starter</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
 
-export default Hero;
+export default Hero

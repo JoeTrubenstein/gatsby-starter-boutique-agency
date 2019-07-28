@@ -1,0 +1,48 @@
+.hero {
+  position: relative;
+  background-color: white;
+  height: 55vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero img {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  .hero {
+    background: url("../images/cube.svg") white;
+  }
+  .hero img {
+    display: none;
+  }
+}
