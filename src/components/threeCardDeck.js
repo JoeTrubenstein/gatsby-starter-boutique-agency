@@ -4,13 +4,9 @@ import pageImage from "../images/page.svg"
 import blogImage from "../images/blog.svg"
 import searchImage from "../images/search.svg"
 
-import {
-  Card,
-  CardImg,
-  CardTitle,
-  CardDeck,
-  CardBody,
-} from "reactstrap"
+import "./threeCardDeck.css"
+
+import { CardImg, Toast, ToastBody, ToastHeader} from "reactstrap"
 
 const ThreeCardDeck = props => {
   const cards = [
@@ -26,36 +22,36 @@ const ThreeCardDeck = props => {
     },
     {
       id: 3,
-      title: "SEO and Analytics",
+      title: "SEO",
       img: searchImage,
     },
   ]
   return (
-    <CardDeck>
+    <div className="grid">
       {cards.map(card => (
-        <Card
-          key={card.id}
-          style={{
-            padding: 10,
-          }}
-        >
-          <CardImg
-            top
-            height={200}
-            width="100%"
-            src={card.img}
-            alt="Card image cap"
-          />
-          <CardBody>
-            <CardTitle style={{
-              fontFamily :`Raleway`,
-              fontWeight:800,
-              fontSize:22
-            }}>{card.title}</CardTitle>
-          </CardBody>
-        </Card>
+        <div className="grid-item" key={card.id}>
+          <Toast
+            style={{
+              width: `100%`,
+              maxWidth: `none`,
+            }}
+          >
+            <ToastHeader>
+              <h3>{card.title}</h3>
+            </ToastHeader>
+            <ToastBody>
+              <CardImg
+                top
+                height={200}
+                width="100%"
+                src={card.img}
+                alt="Card image cap"
+              />
+            </ToastBody>
+          </Toast>
+        </div>
       ))}
-    </CardDeck>
+    </div>
   )
 }
 

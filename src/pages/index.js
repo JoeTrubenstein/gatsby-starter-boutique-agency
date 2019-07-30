@@ -10,7 +10,7 @@ import ThreeCardDeck from "../components/threeCardDeck"
 import ContactForm from "../components/contactForm"
 import Layout from "../components/layout"
 
-import spaceImage from "../images/space.svg"
+import spaceImage from "../images/mail.svg"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -27,8 +27,8 @@ const IndexPage = () => {
   return (
     <>
       <Layout>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <Hero />
+        <Header siteTitle={data.site.siteMetadata.title} servicesLink="Services" contactLink="Contact" />
+        <Hero display="Boutique" lead="A Gatsby Starter" />
         <Container>
           <SEO title="Home" />
           <Row style={{ marginTop: `100px`, marginBottom: `100px` }}>
@@ -38,11 +38,11 @@ const IndexPage = () => {
             </Col>
             <Col sm={6}></Col>
           </Row>
-
+          <div id="services"></div>
           <ThreeCardDeck />
           <Row style={{ marginTop: `100px`, marginBottom: `100px` }}>
             <Col sm={6}>
-              <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+              <div style={{ marginBottom: `1.45rem` }}>
                 <img
                   src={spaceImage}
                   alt="flat art icon design spacesuit rocket-ship"
@@ -50,6 +50,8 @@ const IndexPage = () => {
               </div>
             </Col>
             <Col sm={6}>
+              <div id="contact"></div>
+              <h1>Send us a message</h1>
               <ContactForm />
             </Col>
           </Row>

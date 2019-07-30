@@ -1,9 +1,10 @@
 ---
 layout: post
 title: Behold, Markdown
-image: img/blog-cover.jpg
+path: behold-markdown-nehold
+image: https://source.unsplash.com/random
 author: Joe Trubenstein
-date: 1875-09-30T07:03:47.149Z
+date: 2019-07-30T07:03:47.149Z
 alt: alt text
 ---
 

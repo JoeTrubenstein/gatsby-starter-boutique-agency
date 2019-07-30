@@ -4,10 +4,12 @@ import { Link, graphql } from "gatsby"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Header from "../components/header"
+import Hero from "../components/hero"
 
-import { Container, Card, CardDeck, Col, Row } from "reactstrap"
+import "./blog-index.css"
 
-// Leaving as a class until I can figure out how to pass context from gatsby-node otherwise.
+import { Container, Col, Row, Toast, ToastBody, ToastHeader } from "reactstrap"
+
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
@@ -21,40 +23,59 @@ class BlogIndex extends React.Component {
 
     return (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={data.site.siteMetadata.title} blogPage></Header>
         <Layout location={this.props.location} title={siteTitle}>
-          {console.log(this.props)}
           <SEO
             title={siteTitle}
             keywords={[`blog`, `gatsby`, `javascript`, `react`]}
           />
+          <Hero
+            display="Blog"
+            lead="the sometimes amusing musings of our team "
+          />
+          <div
+            style={{
+              minHeight: `50px`,
+            }}
+          ></div>
           <Container>
             <Row>
               <Col>
-                <CardDeck>
+                <div className="grid">
                   {posts.map(({ node }) => {
                     const title = node.frontmatter.title || node.fields.slug
                     return (
-                      <Card
-                        style={{
-                          padding: `5px`,
-                        }}
-                        key={node.fields.slug}
-                      >
-                        <h3>
-                          <Link
-                            style={{ boxShadow: "none" }}
-                            to={node.fields.slug}
-                          >
-                            {title}
-                          </Link>
-                        </h3>
-                        <small>{node.frontmatter.date}</small>
-                        <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-                      </Card>
+                      <div className="grid-item" key={node.fields.slug}>
+                        <Toast
+                          style={{
+                            width: `100%`,
+                            maxWidth: `none`,
+                          }}
+                          key={node.fields.slug}
+                        >
+                          <ToastHeader>
+                            <h4>
+                              <Link
+                                style={{ boxShadow: "none" }}
+                                to={node.fields.slug}
+                              >
+                                {title}
+                              </Link>
+                            </h4>
+                          </ToastHeader>
+                          <ToastBody>
+                            <small>{node.frontmatter.date}</small>
+                            <img className="featured-image" src={node.frontmatter.image} alt={node.frontmatter.alt}></img>
+                            <p
+                              dangerouslySetInnerHTML={{ __html: node.excerpt }}
+                            />
+                            <Link to={node.fields.slug}>keep reading</Link>
+                          </ToastBody>
+                        </Toast>
+                      </div>
                     )
                   })}
-                </CardDeck>
+                </div>
               </Col>
             </Row>
             <Row>
@@ -80,8 +101,8 @@ class BlogIndex extends React.Component {
                         margin: 5,
                       }}
                     >
-                      <Link
-                        to={`/blog/${i === 0 ? "" : i + 1}`}
+                      <a
+                        href={`/blog/${i === 0 ? "" : i + 1}`}
                         style={{
                           textDecoration: "none",
                           color: i + 1 === currentPage ? "#ffffff" : "",
@@ -89,7 +110,7 @@ class BlogIndex extends React.Component {
                         }}
                       >
                         {i + 1}
-                      </Link>
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -102,15 +123,15 @@ class BlogIndex extends React.Component {
             >
               <Col>
                 {!isFirst && (
-                  <Link to={`blog/${prevPage}`} rel="prev">
+                  <a href={`blog/${prevPage}`} rel="prev">
                     ← Previous Page
-                  </Link>
+                  </a>
                 )}
                 <br></br>
                 {!isLast && (
-                  <Link to={`blog/${nextPage} `} rel="next">
+                  <a href={`blog/${nextPage} `} rel="next">
                     Next Page →
-                  </Link>
+                  </a>
                 )}
               </Col>
             </Row>
@@ -144,6 +165,8 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "DD MMMM, YYYY")
             title
+            image
+            alt
           }
         }
       }
