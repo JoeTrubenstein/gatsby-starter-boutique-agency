@@ -4,13 +4,14 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap"
 const ContactForm = () => {
   return (
     <Form
-      name="boutique"
-      method="post"
+      name="contact"
+      method="POST"
       data-netlify="true"
-      data-netlify-recaptcha="true"
       data-netlify-honeypot="bot-field"
     >
       <FormGroup>
+        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="contact" />
         <Label for="exampleEmail">Email</Label>
         <Input
           type="email"
