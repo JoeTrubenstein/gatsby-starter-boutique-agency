@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
+ 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Header from "../components/header"
@@ -20,6 +20,8 @@ class BlogIndex extends React.Component {
     const isLast = currentPage === numPages
     const prevPage = currentPage - 1 === 1 ? "/" : (currentPage - 1).toString()
     const nextPage = (currentPage + 1).toString()
+
+    console.log(data)
 
     return (
       <>
@@ -149,6 +151,13 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    fileName: file(relativePath: { eq: "place.svg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, maxHeight: 250) {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
     allMarkdownRemark(

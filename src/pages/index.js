@@ -27,7 +27,11 @@ const IndexPage = () => {
   return (
     <>
       <Layout>
-        <Header siteTitle={data.site.siteMetadata.title} servicesLink="Services" contactLink="Contact" />
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          servicesLink="Services"
+          contactLink="Contact"
+        />
         <Hero display="Boutique" lead="A Gatsby Starter" />
         <Container>
           <SEO title="Home" />
@@ -39,6 +43,8 @@ const IndexPage = () => {
             <Col sm={6}></Col>
           </Row>
           <div id="services"></div>
+          <div className="liftCard">
+          </div>
           <ThreeCardDeck />
           <Row style={{ marginTop: `100px`, marginBottom: `100px` }}>
             <Col sm={6}>
